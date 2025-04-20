@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -116,6 +120,18 @@ public class MainActivity extends AppCompatActivity {
                outputAdapter.notifyDataSetChanged();
 
 
+            }
+
+        });
+        Button history = findViewById(R.id.historyButton);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!predictions.isEmpty()){
+                Snackbar.make(findViewById(R.id.main),"Added to History", BaseTransientBottomBar.LENGTH_LONG).show();
+            }else{
+                    Snackbar.make(findViewById(R.id.main),"Nothing to add to History",BaseTransientBottomBar.LENGTH_LONG).show();
+                }
             }
         });
     }
